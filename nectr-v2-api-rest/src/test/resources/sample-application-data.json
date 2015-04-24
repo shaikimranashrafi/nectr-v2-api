@@ -1,0 +1,149 @@
+[
+	{
+		"_id": "545a0d6dcd6afe9a6be5e466",
+		"journeyId": "705e98d5-7d16-43b4-9a78-fddc767cbb25",
+		"customer-information": {
+			"_dbId": "fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"title": "MR",
+			"firstName": "Joe",
+			"middleName": "Miguel",
+			"lastName": "Castilho",
+			"addressLine1": "Basement Flat",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0",
+			"phoneNumber": "8888888888",
+			"emailAddress": "n.castilho@accenture.com"
+		},
+
+		"createTimestamp": "2014-11-05T11:43:41.614Z",
+		"updateTimestamp": "2014-11-05T11:43:43.677Z",
+		"requestUris": [
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information/fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information/fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-billing-preferences",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-credit-card/788494ec-905d-445d-a870-fafa5fa05254",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-billing-address",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/proof-driving-license"
+		],
+
+		"integrationResponseData": {
+
+		},
+
+		"customer-billing-preferences": {
+			"_dbId": "335fe2d8-a2e4-43e7-ab3c-442710d2595e",
+			"paymentMethod": "CREDIT_CARD",
+			"billingMethod": "PAPER",
+			"billingLanguage": "en-CA"
+		},
+
+		"customer-credit-card": {
+			"_dbId": "788494ec-905d-445d-a870-fafa5fa05254",
+			"name": "MR N M CASTILHO",
+			"addressLine1": "38B",
+			"addressLine2": "Brixton Water Lane",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0",
+			"typeCode": "VISA",
+			"cardNumber": "123123123",
+			"expirationDate": "2017-09",
+			"securityCode": "123"
+		},
+
+		"customer-billing-address": {
+			"_dbId": "2fe6985d-e3d6-42d7-8975-cdb69b80579c",
+			"addressLine1": "38B",
+			"addressLine2": "Brixton Water Lane",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0"
+		},
+
+		"proof-driving-license": {
+			"_dbId": "74d3d3cb-995f-4bc4-8459-d4bbd9396b21",
+			"field1": "Test"
+		}
+	},
+	
+	{
+		"_id": "545a0d6dcd6afe9a6be5e467",
+		"journeyId": "705e98d5-7d16-43b4-9a78-fddc767cbb26",
+		"customer-information": {
+			"_dbId": "fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"title": "MR",
+			"firstName": "Joe",
+			"middleName": "Miguel",
+			"lastName": "Castilho",
+			"addressLine1": "Basement Flat",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0",
+			"phoneNumber": "8888888888",
+			"emailAddress": "n.castilho@accenture.com"
+		},
+
+		"createTimestamp": "2014-11-05T11:43:41.614Z",
+		"updateTimestamp": "2014-11-05T11:43:43.677Z",
+		"requestUris": [
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information/fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-information/fa9467b9-709e-4fc1-9ef0-ef5dad2ccf99",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-billing-preferences",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-credit-card/788494ec-905d-445d-a870-fafa5fa05254",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/customer-billing-address",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b",
+			"/api/new-connection/702eb896-1969-4b4d-8612-31328e034a6b/proof-driving-license"
+		],
+
+		"integrationResponseData": {
+
+		},
+
+		"customer-billing-preferences": {
+			"_dbId": "335fe2d8-a2e4-43e7-ab3c-442710d2595e",
+			"paymentMethod": "CREDIT_CARD",
+			"billingMethod": "PAPER",
+			"billingLanguage": "en-CA"
+		},
+
+		"customer-credit-card": {
+			"_dbId": "788494ec-905d-445d-a870-fafa5fa05254",
+			"name": "MR N M CASTILHO",
+			"addressLine1": "38B",
+			"addressLine2": "Brixton Water Lane",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0",
+			"typeCode": "VISA",
+			"cardNumber": "123123123",
+			"expirationDate": "2017-09",
+			"securityCode": "123"
+		},
+
+		"customer-billing-address": {
+			"_dbId": "2fe6985d-e3d6-42d7-8975-cdb69b80579c",
+			"addressLine1": "38B",
+			"addressLine2": "Brixton Water Lane",
+			"city": "London",
+			"province": "London",
+			"postCode": "A0A 0A0"
+		},
+
+		"proof-driving-license": {
+			"_dbId": "74d3d3cb-995f-4bc4-8459-d4bbd9396b21",
+			"field1": "Test"
+		}
+	}
+]

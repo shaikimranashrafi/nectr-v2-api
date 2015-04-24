@@ -1,0 +1,19 @@
+= NeCTR v2 Reference Guide
+
+:doctype: book
+:toc:
+:toclevels: 4
+:source-highlighter: prettify
+:numbered:
+:icons: font
+:hide-uri-scheme:
+:nectr-v2-root-path:
+:nectr-v2-docs-path: /docs
+// ======================================================================================
+
+include::overview.adoc[]
+include::getting-started.adoc[]
+include::architecture.adoc[]
+include::user-guide.adoc[]
+
+// ======================================================================================

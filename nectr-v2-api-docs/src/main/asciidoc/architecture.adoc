@@ -1,0 +1,78 @@
+[[architecture]]
+= Architecture
+
+[partintro]
+--
+This section describes the solution architecture and scope for NeCTR v2.
+--
+
+[[application]]
+== Terminology
+
+|===
+|Term |Description
+
+|Test Scenario
+|Centre to the application is the concept of a Test Scenario which must at the very least
+contain integration data from the Mule runtime for the needed journey in order to be created.
+If the `enable.application-host=true` then it must also have available application data from the HoneyBee runtime.
+
+|Test Id
+|The Test Id is generated everytime a new Test Scenario is created. It follows the
+pattern `<COUNTRY_CODE><CLIENT_ID>-<ENV_ID>-XXXX`, where `XXXX` is a 4 padded sequence number from MongoDB
+for the `<COUNTRY_CODE><CLIENT_ID>` combo.
+
+|Test Journey
+|Test Journey (or simply Journey) refers to the Mule integration data recorded at runtime. The application access
+this data by searching the collection where the recordings live.
+
+|Application Data
+|This term refers to the HoneyBee journey data collected via the XFlow runtime. NeCTR v2 doesn't connect to this
+repository by default or if the `enable.application-host=false` is set.
+
+|Integration Data
+|This data refers to the integration carrier data collected via the Mule Integration Platform runtime. Connecting to
+this data repository is mandatory when creating test scenarios.
+
+|Mongo Connector
+|Is an internal NeCTR v2 component used for accessing recorded data from both the Application and Integration databases.
+
+|Test Replay
+|Test replay is the feature by which the journey data for application or integration, is returned from a
+Test Scenario instead of HoneyBee or the carrier. This feature handled by the NeCTR Mule Component.
+
+|Test Replay History
+|Is an audit of all data (including test results) replayed through NeCTR v2. This feature handled by the NeCTR Mule Component.
+
+|===
+
+== High Level Overview
+The Network Carrier Testing Rig (NeCTR) is an existing testing tool used in CWS to replicate a
+response from a 3rd party Carrier.
+The NeCTR v1 application receives messages from the CWS Integration Platform.
+NeCTR has a basic matching feature to locate the response XML applicable for the request.
+This response is passed back to the integration Platform.
+CWS are investing in a new NeCTR implementation with an advanced set of features. This
+new implementation would be used by both CWS testing and Client QA.
+This implementation of NeCTR v2 will improve the testing capability by providing and
+managing full test journeys.
+
+=== Scope
+* Recording the Request and Response messages from the Mulesoft Integration Platform
+* A new application to manage Test Scenarios sourced from the MuleSoft Integration Platform
+* MuleSoft Integration Platform to route the clients request through to the 3rd Party Carriers or NeCTR v2
+* HoneyBee will have a new ‘training mode’ feature available on the self discovery page
+* HoneyBee to request a ‘Test Identifier’ to the user to playback test scenarios
+* HoneyBee/Client UI auto-fill functionality for a more rapid playback testing
+* NeCTR v2 to respond with a matched response from a given request. The response may need some dynamic content inserted, such as correcting the timestamps and reflecting a value provided from the request.
+* This phase of the NeCTR v2 implementation will be for testing and QA environments
+
+=== Overall Solution
+The following diagram depicts the solution as a whole:
+
+image::nectr-v2-architecture.png[]
+
+=== NeCTR v2 API
+The API application follows a traditional layered architecture:
+
+image::nectr-v2-api-layered.png[]

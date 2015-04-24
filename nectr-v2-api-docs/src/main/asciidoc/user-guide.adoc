@@ -1,0 +1,114 @@
+[[user-guide]]
+= Using NeCTR v2
+
+[partintro]
+--
+This section describes the features of the NeCTR v2 API.
+--
+
+[[guide]]
+== Search Criteria
+For simple (non-text) searching of Test Scenarios and Journeys, a simple query
+language was created in order to provide a more flexible, less brittle, means to
+retrieve documents from NeCTR v2 application. This solution is based on
+Eugen Paraschiv work http://www.baeldung.com/rest-search-language-spring-jpa-criteria[REST Query Language with Spring and JPA Criteria]
+
+In general terms the search criteria is specified on a query string (for enabled REST services, such as `/tests/search` and `/journeys/search`)
+in the following format:
+
+[indent=0]
+----
+	?q=field1:value1,field2>value2,field3<value3
+----
+
+The above criteria would then be converted to the following MongoDB query:
+
+[indent=0]
+----
+	{ "$and" : [ { "field1" : "value1"} , { "field2" : { "$gt" : "value2"}} , { "field3" : { "$lt" : "value3"}}]}
+----
+
+TIP: If the document contains nested objects you can also query them, for example
+`field.nested:value` or `field.nested<value`.
+
+=== Conversion Strategy
+From the example above we can see that all values are treated as strings. This would cause
+problems if the value for a field in the document was stored for instance as an Integer.
+
+To allow for queries to be made using the proper data type a conversion strategy needs to be in place (`StringToSearchCriteriaListConverter`).
+As such when a `value` is read from the query string criteria, it is converted
+to the appropriate data type in the following order:
+
+[indent=0]
+----
+	Integer -> Boolean -> Date -> String
+----
+
+The first successful conversion wins and is used in the MongoDB query. Say for example
+you have the following query:
+
+[indent=0]
+----
+	?q=field1:true,field2:test,field3>01/01/01
+----
+
+With the conversion strategy above the query would be converted to:
+
+[indent=0]
+----
+	{ "$and" : [ { "field1" : true} , { "field2" : "test"} , { "field3" : { "$gt" : { "$date" : "2001-01-01T00:00:00.000Z"}}}]}
+----
+
+=== Coercing Values
+There comes a time when you have a value stored in a document that it is a `String` data type, yet it can
+be naturally converted to an `Integer` or a `Boolean`. This would cause problems with the given
+conversion strategy because the first successful conversion wins, so a String say `"123"` or `"true"` would always
+be converted to an `Integer("123")` and `Boolean("true")` respectively.
+
+Therefore in order to force a `String` to be a `String` no matter what, the `value` can be wrapped
+in quotes (single or double). For instance using the previous example but quoting
+the `field1` and `field3` *values*:
+
+[indent=0]
+----
+	?q=field1:'true',field2:test,field3>'01/01/01'
+----
+
+The following query would be generated instead:
+
+[indent=0]
+----
+	{ "$and" : [ { "field1" : "true"} , { "field2" : "test"} , { "field3" : { "$gt" : "01/01/01"}}]}
+----
+
+=== Limitations
+At present only the following operations are supported:
+
+|===
+|Operator |Description
+
+|:
+|Equals to
+
+|>
+|Greater than
+
+|<
+|Less than
+
+|===
+
+In addition it isn't possible to express a logical `OR` predicate.
+All predicates are generated as `AND` only.
+
+== Accessing Logs
+The log file has been made available on the NeCTR v2 API via the Spring Boot Admin log actuator.
+It can be access on a browser or on the command line using:
+
+[indent=0]
+----
+	$ curl http://localhost:8080/logfile
+----
+
+TIP: You can also retrieve the logs from an ACP environment by using the public IP
+address and port instead of `localhost:8080`.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>OFF</level>
+		</filter>
+		<encoder>
+			<pattern>%-5level | %logger{85} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.accenture" level="DEBUG" />
+	<logger name="com.connectedworldservices" level="DEBUG" />
+	<!-- <logger name="org.springframework" level="INFO" /> -->
+	<!-- <logger name="com.github.fakemongo" level="INFO" /> -->
+	<!-- <logger name="com.mongodb" level="INFO" /> -->
+
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
